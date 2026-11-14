@@ -11,4 +11,15 @@ test('renders the title and result', () => {
 test('labels a passing score', () => {
   expect(resultLabel(85)).toBe('Passed');
 });
-
+test('labels a score below the pass mark', () => {
+  expect(resultLabel(74)).toBe('Needs improvement');
+});
+test('accepts the pass boundary', () => {
+  expect(resultLabel(75)).toBe('Passed');
+});
+test('rejects a negative score', () => {
+  expect(resultLabel(-1)).toBe('Invalid score');
+});
+test('rejects a score above 100', () => {
+  expect(resultLabel(101)).toBe('Invalid score');
+});
